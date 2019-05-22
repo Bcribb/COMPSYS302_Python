@@ -1,0 +1,49 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Blain's World</title>
+    <style>
+        body {
+            background-color: grey;
+            color: white;
+        }
+                
+        .messageForm {
+            position: absolute;
+            bottom: 2%;
+            width: 50%;
+            left: 25%;
+            height: 8%;
+            box-sizing : border-box;
+            border:2px solid black;
+        }
+
+        .messageBox {
+            width: 100%;
+            box-sizing: border-box;
+            font-size: 1em;
+        }
+
+        #heading {
+            top: 5%;
+            font-size: 4em;
+            text-align: center;
+            font-family: arial; 
+        }
+
+    </style>
+</head>
+<body>
+
+<p id="heading">Blain's Login Page</p>
+<div class="messageBox">
+    <form action="/loginServer/signin" method="post" enctype="multipart/form-data">
+        <input type="text" class="messageForm messageInput" name="username" value="" style="top:20%;font-size: 2em" placeholder="Username">
+        <input type="password" class="messageForm messageInput" name="password" value="" style="top:30%;font-size: 2em" placeholder="Password">
+        <input type="text" class="messageForm messageInput" name="location" value="" style="top:40%;font-size: 2em;" placeholder="Location: 0 for uni PC, 1 for uni WIFI, 2 for other">
+        <br><br>
+        <input type="submit" class="messageForm messageButton" value="Submit" style="top:50%;">
+    </form>
+</div>
+</body>
+</html>

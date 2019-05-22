@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welcome!</title>
+    <script>
+        window.onload=function () {
+             var objDiv = document.getElementById("scrollBottom");
+             objDiv.scrollTop = objDiv.scrollHeight;
+        }
+    </script>
+    <style>
+        body {
+            font-family: Arial;
+            color: white;
+            margin: 0;
+            padding: 0;
+            text-align:center;
+            background-color: grey;
+        }
+
+        #massiveDiv {
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+        }
+
+        .split {
+            position: fixed;
+            width: 40%;
+            top: 0%;
+            overflow-x: hidden;
+            overflow-y: hidden;
+            background-color: #222222;
+        }
+
+        .top {
+            height: 10%;
+        }
+
+        .left {
+            left: 10%;
+        }
+
+        .right {
+            left: 50%;
+        }
+
+        .bottom {
+            height: 90%;
+            top: 10%;
+            position: fixed;
+            background-color: #333333;
+        }
+
+        .sidebar {
+            width: 10%;
+            background-color: #222222;
+            z-index: 10;
+            height: 90%;
+            overflow-y: scroll;
+        }
+
+        .profile {
+            margin-left: 10%;
+            width: 35%;
+            background-color: #353535;
+            z-index: 100;
+        }
+
+        .message {
+            margin-left: 45%;
+            width: 35%;
+            background-color: #303030;
+            z-index: 10;
+        }
+
+        .messageForm {
+            position: absolute;
+            bottom: 2%;
+            width: 90%;
+            left: 5%;
+            height: 8%;
+            box-sizing : border-box;
+            border:2px solid black;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            float:left;
+            width: 100%;
+        }
+
+        li form {
+            display: block;
+            text-align: center;
+            padding: 14px;
+            text-decoration: none;
+        }
+
+        #profilePic {
+            width: 30%;
+            height: 10%;
+        }
+
+        .messageDisplay {
+            top: 0;
+            height: 95%;
+            overflow-y: scroll;
+        }
+
+        .messageBox {
+            width: 100%;
+            height: 5%;
+            bottom: -1px;
+            position: absolute;
+            box-sizing: border-box;
+        }
+
+        .messageForm {
+            display: block;
+            box-sizing: border-box;
+            height: 100%;
+            color: white;
+            background-color: #222222;
+        }
+
+        .messageInput {
+            width: 60%;
+            left: 0;
+        }
+
+        .messageButton {
+            width: 20%;
+        }
+
+        .messageButton:hover {
+            background-color: #111111;
+        }
+
+        li form:hover {
+            background-color: #111111;
+            cursor: pointer;
+        }
+
+        .container {
+            border: 2px solid #dedede;
+            background-color: #C32148;
+            border-radius: 5px;
+            padding: 10px;
+            margin-top: 1%;
+            margin-bottom: 1%;
+            margin-left: 2%;
+            margin-right: 2%;
+            text-align:right;
+        }
+
+        .darker {
+            border-color: #ccc;
+            background-color: #702963;
+            text-align:left;
+        }
+
+        .container::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        .container img {
+            float: left;
+            max-width: 60px;
+            max-height: 60px;
+            width: 100%;
+            margin-right: 20px;
+            border-radius: 50%;
+        }
+
+        .container img.right {
+            float: right;
+            margin-left: 20px;
+            margin-right:0;
+        }
+
+        .time-right {
+            float: right;
+            color: #999999;
+        }
+
+        .time-left {
+            float: left;
+            color: #999999;
+        }
+    </style>
+</head>
+<body>
+    <div id="massiveDiv">
+        <div class="split top left">
+            <h2>Hello {{username}}</h2></th>
+        </div>
+        <div class="split top right">
+            <h2>Click here to <a href='/loginServer/signout'>sign out</a>.</h2></th>
+        </div>
+
+        <div class="bottom sidebar">
+            <ul>
+                {{users}}
+            </ul>
+        </div>
+        <div class="bottom profile">
+            <h2>{{profile}}</h2>
+        </div>
+        <div class="bottom message">
+            <div id="scrollBottom" class="messageDisplay">
+                {{messages}}
+            </div>
+            <div class="messageBox">
+                <form action="/userInts/sendThings" method="post" enctype="multipart/form-data" autocomplete="off">
+                    <input type="text" name="message" value="" class="messageForm messageInput">
+                    <input type="file" name="inputFile" value="attach" class="messageForm messageButton" style="margin-left: 55%;opacity:0;z-index:10000">
+                    <input type="submit" value="attach" class="messageForm messageButton" style="margin-left: 55%; z-index:-1">
+                    <input type="submit" value="send" class="messageForm messageButton" style="margin-left: 75%">
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
